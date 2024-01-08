@@ -3,4 +3,13 @@ public class Room {
     public Room() {
         isSearched = false;
     }
+
+    public void enterRoom() {
+
+    }
+
+    public void searchRoom() {
+
+    }
+
 }
