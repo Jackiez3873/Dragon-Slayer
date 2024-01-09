@@ -14,6 +14,10 @@ public class Dragon {
 
     public void dragonTakeDamage() {
         dragonHealth -= player.playerAttack();
+        if (dragonHealth <= 0) {
+            System.out.println("You killed a dragon");
+            deadDragon();
+        }
     }
 
     public void deadDragon() {
