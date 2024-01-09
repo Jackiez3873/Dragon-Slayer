@@ -1,16 +1,39 @@
 public class Dragon {
-    private int DragonHealth;
-    private int DragonLevel;
-    public Dragon() {
-        DragonLevel = (int) (Math.random() * 3) + 1;
-        DragonHealth = 100;
+    private int dragonHealth;
+    private int dragonLevel;
+    private static Player player;
+    public Dragon(Player player) {
+        dragonLevel = (int) (Math.random() * 3) + 1;
+        dragonHealth = 100;
+        this.player = player;
     }
 
-    public void DragonAttack() {
-
+    public int dragonAttack() {
+        return dragonLevel *((int)(Math.random() * 3));
     }
 
-    public void DragonTakeDamage() {
+    public void dragonTakeDamage() {
+        dragonHealth -= player.playerAttack();
+    }
 
+    public void deadDragon() {
+        int randomNum = (int) (Math.random() * 4) + 1;
+        int goldAmount = (int) (Math.random() * 51) + 25;
+        if (randomNum == 1) {
+            player.setPlayerGold(player.getPlayerGold() + goldAmount);
+            System.out.println("You got " + goldAmount + " gold");
+        } else if (randomNum == 2) {
+            player.getSword().swordUpgrade();
+            System.out.println("You got a sword upgrade and upgraded your sword");
+        } else if (randomNum == 3) {
+            int newHealth = player.getPlayerHealth() + ((int)(Math.random() * 15) + 6);
+            if (newHealth > 100) {
+                newHealth = 100;
+            }
+            player.setPlayerHealth(newHealth);
+            System.out.println("You got a health bonus and your new health is " + player.getPlayerHealth());
+        } else {
+            System.out.println("You got nothing");
+        }
     }
 }

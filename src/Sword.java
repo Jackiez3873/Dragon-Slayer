@@ -11,5 +11,11 @@ public class Sword {
         dodgeRating += 2;
     }
 
+    public int getSwordAttack() {
+        return swordAttack;
+    }
 
+    public int getDodgeRating() {
+        return dodgeRating;
+    }
 }
