@@ -40,4 +40,12 @@ public class Dragon {
             System.out.println("You got nothing");
         }
     }
+
+    public int getDragonLevel() {
+        return dragonLevel;
+    }
+
+    public int getDragonHealth() {
+        return dragonHealth;
+    }
 }

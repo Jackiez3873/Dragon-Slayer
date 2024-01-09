@@ -29,6 +29,9 @@ public class Player {
         } else {
             System.out.println("You dodged the dragon's attack");
         }
+        if(playerHealth <= 0) {
+            System.out.println("You died\nGame Over");
+        }
     }
 
     public int getPlayerGold() {

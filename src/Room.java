@@ -17,10 +17,11 @@ public class Room {
 
 
     public void enterRoom() {
-        System.out.println("You entered " + roomName);
         int numDragons = (int)(Math.random() * 3) + 1;
+        System.out.println("You entered " + roomName + "\nYou see " + numDragons + " dragons");
         for(int i = 0; i < numDragons; i++) {
             Dragon dragon  = new Dragon(player);
+            System.out.println("The dragon is level " + dragon.getDragonLevel() + "\nIt has " + dragon.getDragonHealth() + " health");
         }
     }
 
