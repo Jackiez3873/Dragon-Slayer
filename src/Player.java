@@ -10,6 +10,7 @@ public class Player {
 
     private Dragon dragon;
     public Player(String playerName) {
+        topScore = 0;
         this.playerName = playerName;
         playerHealth = 100;
         playerGold = 0;
@@ -18,14 +19,14 @@ public class Player {
     }
 
     public int playerAttack() {
-        return sword.getSwordAttack() * ((int)(Math.random() * 3));
+        return sword.getSwordAttack() * ((int)(Math.random() * 3) + 1);
     }
 
-    public void playerTakeDamage() {
+    public void playerTakeDamage(int damage) {
         int num = (int) (Math.random() * 100) + 1;
         if (num > sword.getDodgeRating()) {
-            playerHealth -= dragon.dragonAttack();
-            System.out.println("You took " + dragon.dragonAttack() + " damage");
+            playerHealth -= damage;
+            System.out.println("You took " + damage + " damage");
         } else {
             System.out.println("You dodged the dragon's attack");
         }
@@ -56,5 +57,12 @@ public class Player {
 
     public void setHasHealthPotion(boolean hasHealthPotion) {
         this.hasHealthPotion = hasHealthPotion;
+    }
+
+    public void setScore(int playerScore) {
+        this.playerScore = playerScore;
+        if (playerScore > topScore) {
+            topScore = playerScore;
+        }
     }
 }

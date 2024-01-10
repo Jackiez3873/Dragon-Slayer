@@ -9,7 +9,7 @@ public class Dragon {
     }
 
     public int dragonAttack() {
-        return dragonLevel *((int)(Math.random() * 3));
+        return dragonLevel *((int)(Math.random() * 3) + 1);
     }
 
     public void dragonTakeDamage() {
@@ -47,5 +47,9 @@ public class Dragon {
 
     public int getDragonHealth() {
         return dragonHealth;
+    }
+
+    public void setDragonHealth(int dragonHealth) {
+        this.dragonHealth = dragonHealth;
     }
 }

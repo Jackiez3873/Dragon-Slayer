@@ -11,6 +11,13 @@ public class DragonSlayer {
         String name = myScanner.nextLine();
         Player player = new Player(name);
         Room room = new Room(player);
-        room.enterRoom();
+        int x = 1;
+        while(x == 1) {
+            System.out.println("Do you want to enter a room(y/n)?");
+            String answer = myScanner.nextLine();
+            if (answer.equals("y")) {
+                room.enterRoom();
+            }
+        }
     }
 }
