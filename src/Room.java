@@ -3,12 +3,14 @@ public class Room {
     private String roomName;
     private String[] room = {"the den", "the cave", "the forest", "the swamp", "the castle"};
     private Player player;
+    private boolean roomsCleared;
     public Room(Player player) {
         this.player = player;
         isSearched = false;
     }
 
     public void enterRoom() {
+        roomsCleared = false;
         roomName = room[0];
         String[] newList = new String[room.length - 1];
         int index = 0;
@@ -39,6 +41,7 @@ public class Room {
         }
         if (room.length == 0) {
             System.out.println("You cleared all the rooms.\nYou Win!");
+            roomsCleared = true;
         }
     }
 
