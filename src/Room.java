@@ -1,16 +1,21 @@
+import java.util.Scanner;
 public class Room {
-    private boolean isSearched;
+    private String[] searchedRooms;
     private String roomName;
     private String[] room = {"the den", "the cave", "the forest", "the swamp", "the castle"};
     private Player player;
+    private int roomNumber;
     private boolean roomsCleared;
+    private Scanner myScanner;
     public Room(Player player) {
+        roomNumber = 0;
         this.player = player;
-        isSearched = false;
+        roomsCleared = false;
+        searchedRooms = new String[5];
     }
 
     public void enterRoom() {
-        roomsCleared = false;
+        roomNumber++;
         roomName = room[0];
         String[] newList = new String[room.length - 1];
         int index = 0;
@@ -20,6 +25,11 @@ public class Room {
         }
         room = newList;
         int numDragons = (int)(Math.random() * 3) + 1;
+        System.out.println("You entered " + roomName + ". Do you want to search the room(y/n)?");
+        String choice = myScanner.nextLine();
+        if (choice.equals("y")) {
+            searchRoom();
+        }
         System.out.println("You entered " + roomName + "\nYou see " + numDragons + " dragons");
         for(int i = 0; i < numDragons; i++) {
             Dragon dragon  = new Dragon(player);
@@ -46,12 +56,25 @@ public class Room {
     }
 
     public void searchRoom() {
-        int randNum = (int)(Math.random() * 2) + 1;
-        if (randNum == 1) {
-            player.setHasHealthPotion(true);
-            System.out.println("You found a health pot!");
+        boolean isSearched = false;
+        for (int i  = 0; i < searchedRooms.length; i++) {
+            if(searchedRooms[i] != null) {
+                if(roomName.equals(searchedRooms[i])) {
+                    isSearched = true;
+                }
+            }
+        }
+        if (isSearched == false) {
+            int randNum = (int)(Math.random() * 2) + 1;
+            if (randNum == 1) {
+                player.setHasHealthPotion(true);
+                System.out.println("You searched the room and found a health pot!");
+            } else {
+                System.out.println("You found nothing");
+            }
+            searchedRooms[roomNumber - 1] = roomName;
         } else {
-            System.out.println("You found nothing");
+            System.out.println("You have already searched this room");
         }
     }
 

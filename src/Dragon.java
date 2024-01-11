@@ -9,7 +9,7 @@ public class Dragon {
     }
 
     public int dragonAttack() {
-        return dragonLevel *((int)(Math.random() * 3) + 1);
+        return dragonLevel *((int)(Math.random() * 5) + 2);
     }
 
     public void dragonTakeDamage() {

@@ -54,6 +54,9 @@ public class Player {
     public void setPlayerHealth(int playerHealth) {
         this.playerHealth = playerHealth;
     }
+    public boolean getHasHealthPot() {
+        return hasHealthPotion;
+    }
 
     public void setHasHealthPotion(boolean hasHealthPotion) {
         this.hasHealthPotion = hasHealthPotion;
