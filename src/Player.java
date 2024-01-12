@@ -3,14 +3,13 @@ public class Player {
     private int playerHealth;
     private int playerGold;
 
-    private static int topScore;
+    private static int topScore = 0;
     private int playerScore;
     private boolean hasHealthPotion;
     private Sword sword;
 
     private Dragon dragon;
     public Player(String playerName) {
-        topScore = 0;
         this.playerName = playerName;
         playerHealth = 100;
         playerGold = 0;
@@ -30,9 +29,15 @@ public class Player {
         } else {
             System.out.println("You dodged the dragon's attack");
         }
-        if(playerHealth <= 0) {
-            System.out.println("You died\nGame Over");
+    }
+
+    public void useHealthPot() {
+        int newHealth = getPlayerHealth() + ((int)(Math.random() * 15) + 6);
+        if (newHealth > 100) {
+            newHealth = 100;
         }
+        setPlayerHealth(newHealth);
+        this.hasHealthPotion = false;
     }
 
     public int getPlayerGold() {
@@ -50,6 +55,9 @@ public class Player {
     public int getPlayerHealth() {
         return playerHealth;
     }
+    public void setHasHealthPotion(boolean hasHealthPotion) {
+        this.hasHealthPotion = hasHealthPotion;
+    }
 
     public void setPlayerHealth(int playerHealth) {
         this.playerHealth = playerHealth;
@@ -58,12 +66,13 @@ public class Player {
         return hasHealthPotion;
     }
 
-    public void setHasHealthPotion(boolean hasHealthPotion) {
-        this.hasHealthPotion = hasHealthPotion;
-    }
+    public void recordScore(boolean roomsCleared) {
+        if(roomsCleared = false) {
+            this.playerScore = playerGold + playerHealth + sword.getDodgeRating() + sword.getSwordAttack();
+        } else {
+            this.playerScore = playerGold + playerHealth + sword.getDodgeRating() + sword.getSwordAttack() + 100;
+        }
 
-    public void setScore(int playerScore) {
-        this.playerScore = playerScore;
         if (playerScore > topScore) {
             topScore = playerScore;
         }

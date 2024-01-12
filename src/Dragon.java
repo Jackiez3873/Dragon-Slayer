@@ -30,11 +30,7 @@ public class Dragon {
             player.getSword().swordUpgrade();
             System.out.println("You got a sword upgrade and upgraded your sword");
         } else if (randomNum == 3) {
-            int newHealth = player.getPlayerHealth() + ((int)(Math.random() * 15) + 6);
-            if (newHealth > 100) {
-                newHealth = 100;
-            }
-            player.setPlayerHealth(newHealth);
+            player.useHealthPot();
             System.out.println("You got a health bonus and your new health is " + player.getPlayerHealth());
         } else {
             System.out.println("You got nothing");
