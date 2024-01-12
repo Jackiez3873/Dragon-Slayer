@@ -28,7 +28,7 @@ public class Room {
             }
             room = newList;
             int numDragons = (int) (Math.random() * 3) + 1;
-            System.out.println("You entered " + roomName + "\nYou see " + numDragons + " dragons");
+            System.out.println("You entered " + roomName + "\n" + numDragons + " dragons spawn");
             for (int i = 0; i < numDragons; i++) {
                 Dragon dragon = new Dragon(player);
                 System.out.println("The dragon is level " + dragon.getDragonLevel() + "\nIt has " + dragon.getDragonHealth() + " health");
@@ -66,7 +66,13 @@ public class Room {
                     } else if (choice.equals("w")) {
                         System.out.println(player.getPlayerSwordInfo());
                     }
+                    try {
+                        Thread.sleep(2000);  // 2000 milliseconds, or 2 seconds
+                    } catch (Exception e) {
+                        System.out.println("error");
+                    }
 
+                    ConsoleUtility.clearScreen();
                 }
             }
             if (room.length == 0) {

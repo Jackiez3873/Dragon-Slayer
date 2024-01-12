@@ -25,15 +25,15 @@ public class Dragon {
         int goldAmount = (int) (Math.random() * 51) + 25;
         if (randomNum == 1) {
             player.setPlayerGold(player.getPlayerGold() + goldAmount);
-            System.out.println("You got " + goldAmount + " gold");
+            System.out.println("You killed a dragon and got " + goldAmount + " gold");
         } else if (randomNum == 2) {
             player.getSword().swordUpgrade();
-            System.out.println("You got a sword upgrade and upgraded your sword");
+            System.out.println("You killed a dragon and got a sword upgrade and upgraded your sword");
         } else if (randomNum == 3) {
             player.useHealthPot();
-            System.out.println("You got a health bonus and your new health is " + player.getPlayerHealth());
+            System.out.println("You killed a dragon and got a health bonus and your new health is " + player.getPlayerHealth());
         } else {
-            System.out.println("You got nothing");
+            System.out.println("You killed a dragon and got nothing");
         }
     }
 
