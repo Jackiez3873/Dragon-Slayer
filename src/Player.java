@@ -8,7 +8,6 @@ public class Player {
     private boolean hasHealthPotion;
     private Sword sword;
 
-    private Dragon dragon;
     public Player(String playerName) {
         this.playerName = playerName;
         playerHealth = 100;
@@ -43,6 +42,9 @@ public class Player {
     public int getPlayerGold() {
         return playerGold;
     }
+    public int getTopScore() {
+        return topScore;
+    }
 
     public void setPlayerGold(int playerGold) {
         this.playerGold = playerGold;
@@ -50,6 +52,9 @@ public class Player {
 
     public Sword getSword() {
         return sword;
+    }
+    public String getPlayerSwordInfo() {
+        return "Your sword has an  attack of " + sword.getSwordAttack() + " and a dodge rating of " + sword.getDodgeRating();
     }
 
     public int getPlayerHealth() {

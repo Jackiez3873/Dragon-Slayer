@@ -33,7 +33,7 @@ public class Room {
                 Dragon dragon = new Dragon(player);
                 System.out.println("The dragon is level " + dragon.getDragonLevel() + "\nIt has " + dragon.getDragonHealth() + " health");
                 while (dragon.getDragonHealth() > 0) {
-                    System.out.println("You entered " + roomName + ". Do you want to search the room, attack the dragon or use a health pot(s/a/u)?");
+                    System.out.println("You entered " + roomName + ". Do you want to search the room(s), attack the dragon(a), use a health pot(u), inspect dragon level(i), view current health(h), view current weapon stats(w) (s/a/u/i/h/w)?");
                     String choice = myScanner.nextLine();
                     if (choice.equals("s")) {
                         searchRoom();
@@ -59,6 +59,12 @@ public class Room {
                         } else {
                             System.out.println("You don't have a health pot");
                         }
+                    } else if(choice.equals("i")) {
+                        System.out.println("The dragon is level " + dragon.getDragonLevel());
+                    } else if(choice.equals("h")) {
+                        System.out.println("You have " + player.getPlayerHealth() + " health");
+                    } else if (choice.equals("w")) {
+                        System.out.println(player.getPlayerSwordInfo());
                     }
 
                 }

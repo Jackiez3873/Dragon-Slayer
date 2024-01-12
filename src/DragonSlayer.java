@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 public class DragonSlayer {
     private Scanner myScanner;
@@ -13,19 +14,21 @@ public class DragonSlayer {
             String name = myScanner.nextLine();
             Player player = new Player(name);
             Room room = new Room(player);
-            System.out.println("Do you want to enter a room(y/n)?");
-            String answer = myScanner.nextLine();
-            if (answer.equals("y")) {
-                room.enterRoom();
-            }
-            System.out.println("Do you want to play again?(y/n) ");
-            String choice = myScanner.nextLine();
-            if(answer.equals("y")) {
-                x = 1;
-                System.out.println("You decided to play again");
-            } else if(answer.equals("n")) {
+            System.out.println("MAIN MENU\n1.START NEW GAME\n2.QUIT\n3.VEIW TOP SCORE\n Enter your choice(1,2,3)");
+            String number = myScanner.nextLine();
+            if(number.equals("1")) {
+                System.out.println("Do you want to enter a room(y/n)?");
+                String answer = myScanner.nextLine();
+                if (answer.equals("y")) {
+                    room.enterRoom();
+                }
+            } else if(number.equals("2")) {
+                System.out.println("You quit");
                 x = 0;
+            } else if(number.equals("3")) {
+                System.out.println("Top Score: " + player.getTopScore());
             }
+
         }
     }
 }
