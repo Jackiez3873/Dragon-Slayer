@@ -8,12 +8,18 @@ public class DragonSlayer {
 
     public void play() {
         System.out.println("Welcome to the Dragon Slayer game!");
+        System.out.println("What is your name? ");
+        String name = myScanner.nextLine();
         int x = 1;
         while(x == 1) {
-            System.out.println("What is your name? ");
-            String name = myScanner.nextLine();
             Player player = new Player(name);
             Room room = new Room(player);
+            try {
+                Thread.sleep(2000);  // 2000 milliseconds, or 2 seconds
+            } catch (Exception e) {
+                System.out.println("error");
+            }
+            ConsoleUtility.clearScreen();
             System.out.println("MAIN MENU\n1.START NEW GAME\n2.QUIT\n3.VEIW TOP SCORE\n Enter your choice(1,2,3)");
             String number = myScanner.nextLine();
             if(number.equals("1")) {

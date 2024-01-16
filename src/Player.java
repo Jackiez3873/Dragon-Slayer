@@ -31,7 +31,7 @@ public class Player {
     }
 
     public void useHealthPot() {
-        int newHealth = getPlayerHealth() + ((int)(Math.random() * 15) + 6);
+        int newHealth = getPlayerHealth() + ((int)(Math.random() * 16) + 35);
         if (newHealth > 100) {
             newHealth = 100;
         }

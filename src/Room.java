@@ -17,7 +17,7 @@ public class Room {
     }
 
     public void enterRoom() {
-        while(roomsCleared == false) {
+        while (roomsCleared == false) {
             roomNumber++;
             roomName = room[0];
             String[] newList = new String[room.length - 1];
@@ -28,12 +28,18 @@ public class Room {
             }
             room = newList;
             int numDragons = (int) (Math.random() * 3) + 1;
-            System.out.println("You entered " + roomName + "\n" + numDragons + " dragons spawn");
+            try {
+                Thread.sleep(2000);  // 2000 milliseconds, or 2 seconds
+            } catch (Exception e) {
+                System.out.println("error");
+            }
+            ConsoleUtility.clearScreen();
+            System.out.println("You entered " + ConsoleUtility.CYAN + roomName + ConsoleUtility.RESET + "\n" + numDragons + " dragons spawn");
             for (int i = 0; i < numDragons; i++) {
                 Dragon dragon = new Dragon(player);
                 System.out.println("The dragon is level " + dragon.getDragonLevel() + "\nIt has " + dragon.getDragonHealth() + " health");
-                while (dragon.getDragonHealth() > 0) {
-                    System.out.println("You entered " + roomName + ". Do you want to search the room(s), attack the dragon(a), use a health pot(u), inspect dragon level(i), view current health(h), view current weapon stats(w) (s/a/u/i/h/w)?");
+                while (dragon.getDragonHealth() > 0 && player.getPlayerHealth() > 0) {
+                    System.out.println("You entered " + ConsoleUtility.CYAN + roomName + ConsoleUtility.RESET + ". Do you want to search the room(s), attack the dragon(a), use a health pot(u), inspect dragon level(i), view current health(h), view current weapon stats(w) (s/a/u/i/h/w)?");
                     String choice = myScanner.nextLine();
                     if (choice.equals("s")) {
                         searchRoom();
@@ -42,59 +48,52 @@ public class Room {
                             int playerAttack = player.playerAttack();
                             System.out.println("You attack the dragon for " + playerAttack + " damage");
                             dragon.setDragonHealth(dragon.getDragonHealth() - playerAttack);
-                            System.out.println("The dragon now has " + dragon.getDragonHealth() + " health");
+                            System.out.println("The dragon now has " + ConsoleUtility.RED + dragon.getDragonHealth() + ConsoleUtility.RESET + " health");
                         }
                         if (dragon.getDragonHealth() <= 0) {
                             dragon.deadDragon();
                         } else {
                             player.playerTakeDamage(dragon.dragonAttack());
-                            System.out.println("You have " + player.getPlayerHealth() + " health");
-                            if(player.getPlayerHealth() <= 0) {
-                                System.out.println("You died\nGame Over");
+                            System.out.println("You have " + ConsoleUtility.RED + player.getPlayerHealth() + ConsoleUtility.RESET + " health");
+                            if (player.getPlayerHealth() <= 0) {
+                                System.out.println(ConsoleUtility.RED + "You died\nGame Over" + ConsoleUtility.RESET);
                             }
                         }
                     } else if (choice.equals("u")) {
-                        if(player.getHasHealthPot() == true) {
+                        if (player.getHasHealthPot() == true) {
                             player.useHealthPot();
+                            System.out.println("You used a health pot and you now have " + ConsoleUtility.RED + player.getPlayerHealth() + ConsoleUtility.RESET + " health");
                         } else {
                             System.out.println("You don't have a health pot");
                         }
-                    } else if(choice.equals("i")) {
+                    } else if (choice.equals("i")) {
                         System.out.println("The dragon is level " + dragon.getDragonLevel());
-                    } else if(choice.equals("h")) {
+                    } else if (choice.equals("h")) {
                         System.out.println("You have " + player.getPlayerHealth() + " health");
                     } else if (choice.equals("w")) {
                         System.out.println(player.getPlayerSwordInfo());
                     }
-                    try {
-                        Thread.sleep(2000);  // 2000 milliseconds, or 2 seconds
-                    } catch (Exception e) {
-                        System.out.println("error");
-                    }
+                }
+                if (room.length == 0) {
+                    System.out.println(ConsoleUtility.YELLOW + "You cleared all the rooms.\nYou Win!" + ConsoleUtility.RESET);
+                    roomsCleared = true;
 
-                    ConsoleUtility.clearScreen();
                 }
             }
-            if (room.length == 0) {
-                System.out.println("You cleared all the rooms.\nYou Win!");
-                roomsCleared = true;
-
-            }
+            player.recordScore(roomsCleared);
         }
-        player.recordScore(roomsCleared);
     }
-
     public void searchRoom() {
         boolean isSearched = false;
-        for (int i  = 0; i < searchedRooms.length; i++) {
-            if(searchedRooms[i] != null) {
-                if(roomName.equals(searchedRooms[i])) {
+        for (int i = 0; i < searchedRooms.length; i++) {
+            if (searchedRooms[i] != null) {
+                if (roomName.equals(searchedRooms[i])) {
                     isSearched = true;
                 }
             }
         }
         if (isSearched == false) {
-            int randNum = (int)(Math.random() * 2) + 1;
+            int randNum = (int) (Math.random() * 2) + 1;
             if (randNum == 1) {
                 System.out.println("You searched the room and found a health pot!");
                 if (player.getHasHealthPot() == true) {
