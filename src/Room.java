@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class Room {
     private String[] searchedRooms;
     private String roomName;
-    private String[] room = {"the den", "the cave", "the forest", "the swamp", "the castle"};
+    private String[] room = {"the den", "the cave", "the forest", "the swamp", "the castle"}; //list of room names
     private Player player;
     private int roomNumber;
     private boolean roomsCleared;
@@ -22,7 +22,7 @@ public class Room {
             roomName = room[0];
             String[] newList = new String[room.length - 1];
             int index = 0;
-            for (int i = 1; i < room.length; i++) {
+            for (int i = 1; i < room.length; i++) { //removes a room from the roomList
                 newList[index] = room[i];
                 index++;
             }
@@ -35,7 +35,7 @@ public class Room {
             }
             ConsoleUtility.clearScreen();
             System.out.println("You entered " + ConsoleUtility.CYAN + roomName + ConsoleUtility.RESET + "\n" + numDragons + " dragons spawn");
-            for (int i = 0; i < numDragons; i++) {
+            for (int i = 0; i < numDragons; i++) { // loop that creates 1 to 3 dragons per room
                 Dragon dragon = new Dragon(player);
                 System.out.println("The dragon is level " + dragon.getDragonLevel() + "\nIt has " + dragon.getDragonHealth() + " health");
                 while (dragon.getDragonHealth() > 0 && player.getPlayerHealth() > 0) {
@@ -75,17 +75,19 @@ public class Room {
                     }
                 }
                 if (room.length == 0) {
-                    System.out.println(ConsoleUtility.YELLOW + "You cleared all the rooms.\nYou Win!" + ConsoleUtility.RESET);
                     roomsCleared = true;
-
                 }
             }
-            player.recordScore(roomsCleared);
         }
+        if (room.length == 0) {
+            System.out.println(ConsoleUtility.YELLOW + "You cleared all the rooms.\nYou Win!" + ConsoleUtility.RESET);
+        }
+        player.recordScore(roomsCleared);
+        System.out.println("Your score is " + player.getPlayerScore());
     }
     public void searchRoom() {
         boolean isSearched = false;
-        for (int i = 0; i < searchedRooms.length; i++) {
+        for (int i = 0; i < searchedRooms.length; i++) { //list of rooms that are searched
             if (searchedRooms[i] != null) {
                 if (roomName.equals(searchedRooms[i])) {
                     isSearched = true;

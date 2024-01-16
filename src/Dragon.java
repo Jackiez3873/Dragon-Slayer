@@ -3,13 +3,13 @@ public class Dragon {
     private int dragonLevel;
     private static Player player;
     public Dragon(Player player) {
-        dragonLevel = (int) (Math.random() * 3) + 1;
+        dragonLevel = (int) (Math.random() * 3) + 1; //creates Dragon that is level 1 to 3
         dragonHealth = 100;
         this.player = player;
     }
 
     public int dragonAttack() {
-        return dragonLevel *((int)(Math.random() * 5) + 2);
+        return dragonLevel * ((int)(Math.random() * 5) + 2);
     }
 
     public void dragonTakeDamage() {

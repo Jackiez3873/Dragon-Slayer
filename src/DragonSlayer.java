@@ -7,8 +7,8 @@ public class DragonSlayer {
     }
 
     public void play() {
-        System.out.println("Welcome to the Dragon Slayer game!");
-        System.out.println("What is your name? ");
+        System.out.println(ConsoleUtility.BLUE + "Welcome to the Dragon Slayer game!" + ConsoleUtility.RESET);
+        System.out.println(ConsoleUtility.BLUE + "What is your name? " + ConsoleUtility.RESET);
         String name = myScanner.nextLine();
         int x = 1;
         while(x == 1) {
@@ -20,21 +20,20 @@ public class DragonSlayer {
                 System.out.println("error");
             }
             ConsoleUtility.clearScreen();
-            System.out.println("MAIN MENU\n1.START NEW GAME\n2.QUIT\n3.VEIW TOP SCORE\n Enter your choice(1,2,3)");
+            System.out.println(ConsoleUtility.GREEN + "MAIN MENU\n1.START NEW GAME\n2.QUIT\n3.VEIW TOP SCORE\n Enter your choice(1,2,3)" + ConsoleUtility.RESET);
             String number = myScanner.nextLine();
             if(number.equals("1")) {
-                System.out.println("Do you want to enter a room(y/n)?");
+                System.out.println(ConsoleUtility.BLUE + "Do you want to enter a room(y/n)?" + ConsoleUtility.RESET);
                 String answer = myScanner.nextLine();
                 if (answer.equals("y")) {
                     room.enterRoom();
                 }
             } else if(number.equals("2")) {
-                System.out.println("You quit");
+                System.out.println(ConsoleUtility.BLUE + "You quit" + ConsoleUtility.RESET);
                 x = 0;
             } else if(number.equals("3")) {
-                System.out.println("Top Score: " + player.getTopScore());
+                System.out.println(ConsoleUtility.BLUE + "Top Score: " + player.getTopScore() + ConsoleUtility.RESET);
             }
-
         }
     }
 }

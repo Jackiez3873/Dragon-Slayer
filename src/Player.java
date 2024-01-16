@@ -17,7 +17,7 @@ public class Player {
     }
 
     public int playerAttack() {
-        return sword.getSwordAttack() * ((int)(Math.random() * 3) + 1);
+        return sword.getSwordAttack() * ((int)(Math.random() * 3) + 100);
     }
 
     public void playerTakeDamage(int damage) {
@@ -70,7 +70,9 @@ public class Player {
     public boolean getHasHealthPot() {
         return hasHealthPotion;
     }
-
+    public int getPlayerScore() {
+        return playerScore;
+    }
     public void recordScore(boolean roomsCleared) {
         if(roomsCleared = false) {
             this.playerScore = playerGold + playerHealth + sword.getDodgeRating() + sword.getSwordAttack();
