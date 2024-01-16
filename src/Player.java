@@ -17,7 +17,7 @@ public class Player {
     }
 
     public int playerAttack() {
-        return sword.getSwordAttack() * ((int)(Math.random() * 3) + 100);
+        return sword.getSwordAttack() * ((int)(Math.random() * 3) + 2);
     }
 
     public void playerTakeDamage(int damage) {
