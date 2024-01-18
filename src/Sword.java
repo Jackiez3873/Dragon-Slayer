@@ -6,16 +6,16 @@ public class Sword {
         dodgeRating = 20;
     }
 
-    public void swordUpgrade() {
-        swordAttack += 2;
-        dodgeRating += 2;
-    }
-
     public int getSwordAttack() {
         return swordAttack;
     }
 
     public int getDodgeRating() {
         return dodgeRating;
+    }
+
+    public void swordUpgrade() {
+        swordAttack += 2;
+        dodgeRating += 2;
     }
 }

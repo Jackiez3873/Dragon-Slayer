@@ -5,7 +5,6 @@ public class DragonSlayer {
     public DragonSlayer() {
         myScanner = new Scanner(System.in);
     }
-
     public void play() {
         System.out.println(ConsoleUtility.BLUE + "Welcome to the Dragon Slayer game!" + ConsoleUtility.RESET);
         System.out.println(ConsoleUtility.BLUE + "What is your name? " + ConsoleUtility.RESET);
@@ -23,7 +22,7 @@ public class DragonSlayer {
             System.out.println(ConsoleUtility.GREEN + "MAIN MENU\n1.START NEW GAME\n2.QUIT\n3.VEIW TOP SCORE\n Enter your choice(1,2,3)" + ConsoleUtility.RESET);
             String number = myScanner.nextLine();
             if(number.equals("1")) {
-                System.out.println(ConsoleUtility.BLUE + "Do you want to enter a room(y/n)?" + ConsoleUtility.RESET);
+                System.out.println(ConsoleUtility.BLUE + "Do you want to enter a room(y/n)(You will automatically move to the next room when you beat a room)?" + ConsoleUtility.RESET);
                 String answer = myScanner.nextLine();
                 if (answer.equals("y")) {
                     room.enterRoom();

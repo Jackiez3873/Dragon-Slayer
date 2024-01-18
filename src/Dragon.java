@@ -8,16 +8,20 @@ public class Dragon {
         this.player = player;
     }
 
-    public int dragonAttack() {
-        return dragonLevel * ((int)(Math.random() * 5) + 2);
+    public int getDragonLevel() {
+        return dragonLevel;
     }
 
-    public void dragonTakeDamage() {
-        dragonHealth -= player.playerAttack();
-        if (dragonHealth <= 0) {
-            System.out.println("You killed a dragon");
-            deadDragon();
-        }
+    public int getDragonHealth() {
+        return dragonHealth;
+    }
+
+    public void setDragonHealth(int dragonHealth) {
+        this.dragonHealth = dragonHealth;
+    }
+
+    public int dragonAttack() {
+        return dragonLevel * ((int)(Math.random() * 5) + 2);
     }
 
     public void deadDragon() {
@@ -35,17 +39,5 @@ public class Dragon {
         } else {
             System.out.println("You killed a dragon and got nothing");
         }
-    }
-
-    public int getDragonLevel() {
-        return dragonLevel;
-    }
-
-    public int getDragonHealth() {
-        return dragonHealth;
-    }
-
-    public void setDragonHealth(int dragonHealth) {
-        this.dragonHealth = dragonHealth;
     }
 }

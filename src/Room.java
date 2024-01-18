@@ -85,6 +85,7 @@ public class Room {
         player.recordScore(roomsCleared);
         System.out.println("Your score is " + player.getPlayerScore());
     }
+
     public void searchRoom() {
         boolean isSearched = false;
         for (int i = 0; i < searchedRooms.length; i++) { //list of rooms that are searched
@@ -111,5 +112,4 @@ public class Room {
             System.out.println("You have already searched this room");
         }
     }
-
 }

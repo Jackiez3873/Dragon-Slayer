@@ -2,18 +2,56 @@ public class Player {
     private String playerName;
     private int playerHealth;
     private int playerGold;
-
     private static int topScore = 0;
     private int playerScore;
     private boolean hasHealthPotion;
     private Sword sword;
-
     public Player(String playerName) {
         this.playerName = playerName;
         playerHealth = 100;
         playerGold = 0;
         hasHealthPotion = false;
         sword = new Sword();
+    }
+
+    public boolean getHasHealthPot() {
+        return hasHealthPotion;
+    }
+
+    public int getPlayerScore() {
+        return playerScore;
+    }
+
+    public int getPlayerGold() {
+        return playerGold;
+    }
+
+    public int getTopScore() {
+        return topScore;
+    }
+
+    public Sword getSword() {
+        return sword;
+    }
+
+    public String getPlayerSwordInfo() {
+        return "Your sword has an  attack of " + sword.getSwordAttack() + " and a dodge rating of " + sword.getDodgeRating();
+    }
+
+    public int getPlayerHealth() {
+        return playerHealth;
+    }
+
+    public void setHasHealthPotion(boolean hasHealthPotion) {
+        this.hasHealthPotion = hasHealthPotion;
+    }
+
+    public void setPlayerGold(int playerGold) {
+        this.playerGold = playerGold;
+    }
+
+    public void setPlayerHealth(int playerHealth) {
+        this.playerHealth = playerHealth;
     }
 
     public int playerAttack() {
@@ -37,41 +75,6 @@ public class Player {
         }
         setPlayerHealth(newHealth);
         this.hasHealthPotion = false;
-    }
-
-    public int getPlayerGold() {
-        return playerGold;
-    }
-    public int getTopScore() {
-        return topScore;
-    }
-
-    public void setPlayerGold(int playerGold) {
-        this.playerGold = playerGold;
-    }
-
-    public Sword getSword() {
-        return sword;
-    }
-    public String getPlayerSwordInfo() {
-        return "Your sword has an  attack of " + sword.getSwordAttack() + " and a dodge rating of " + sword.getDodgeRating();
-    }
-
-    public int getPlayerHealth() {
-        return playerHealth;
-    }
-    public void setHasHealthPotion(boolean hasHealthPotion) {
-        this.hasHealthPotion = hasHealthPotion;
-    }
-
-    public void setPlayerHealth(int playerHealth) {
-        this.playerHealth = playerHealth;
-    }
-    public boolean getHasHealthPot() {
-        return hasHealthPotion;
-    }
-    public int getPlayerScore() {
-        return playerScore;
     }
     public void recordScore(boolean roomsCleared) {
         if(roomsCleared = false) {
