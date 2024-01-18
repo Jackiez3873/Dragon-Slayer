@@ -15,7 +15,7 @@ public class Sword {
     }
 
     public void swordUpgrade() {
-        swordAttack += 2;
-        dodgeRating += 2;
+        swordAttack += 4;
+        dodgeRating += 4;
     }
 }
