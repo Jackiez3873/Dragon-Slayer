@@ -3,7 +3,7 @@ public class Room {
     private String[] searchedRooms;
     private String roomName;
     private String[] room = {"the den", "the cave", "the forest", "the swamp", "the castle"}; //list of room names
-    private Player player;
+    private static Player player;
     private int roomNumber;
     private boolean roomsCleared;
     private Scanner myScanner;
