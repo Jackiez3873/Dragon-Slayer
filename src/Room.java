@@ -99,10 +99,6 @@ public class Room {
             int randNum = (int) (Math.random() * 2) + 1;
             if (randNum == 1) {
                 System.out.println("You searched the room and found a health pot!");
-                if (player.getHasHealthPot() == true) {
-                    System.out.println("You already have a health pot and can only hold one so you decide to use your previous health pot");
-                    player.useHealthPot();
-                }
                 player.setHasHealthPotion(true);
             } else {
                 System.out.println("You found nothing");
